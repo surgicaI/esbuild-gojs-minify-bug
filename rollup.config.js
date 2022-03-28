@@ -1,5 +1,6 @@
 import commonjs from "@rollup/plugin-commonjs";
 import resolve from "@rollup/plugin-node-resolve";
+import { minify } from "rollup-plugin-esbuild";
 
 export default {
   input: "src/index.js",
@@ -10,5 +11,5 @@ export default {
     sourcemap: true,
     indent: false,
   },
-  plugins: [resolve(), commonjs()],
+  plugins: [resolve(), commonjs(), process.env.minify && minify()],
 };
